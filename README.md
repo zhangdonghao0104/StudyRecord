@@ -1,5 +1,5 @@
 
-#### [更多日志](./UpdateLog.md)
+#### [项目架构](./UpdateLog.md)
 
 > **原文地址：** [https://github.com/goldze/MVVMHabit](https://github.com/goldze/MVVMHabit)
 
