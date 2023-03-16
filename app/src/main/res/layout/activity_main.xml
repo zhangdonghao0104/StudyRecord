@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.zdh.study.vm.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,10 +37,11 @@
                     android:text="仪表盘" />
 
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="coordinatorLayout"
+                    binding:onClickCommand="@{viewModel.jumpOnClickCommand}"
                     android:text="CoordinatorLayout" />
                 <androidx.appcompat.widget.AppCompatButton
                     android:layout_width="match_parent"

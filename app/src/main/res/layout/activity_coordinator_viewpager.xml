@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.zdh.study.vm.ViewPagerViewModel"/>
+
+        <import type="com.zdh.study.ui.adapter.ViewPagerBindingAdapter" />
+        <variable
+            name="viewModel"
+            type="ViewPagerViewModel" />
+
+        <variable
+            name="adapter"
+            type="ViewPagerBindingAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+
+            <ImageView android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="?attr/colorPrimary"
+                android:scaleType="fitXY"
+                android:src="@mipmap/yingbao"
+                app:layout_scrollFlags="scroll|enterAlways"/>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="?attr/colorPrimary"
+                app:tabIndicatorColor="#F00000"
+                app:tabIndicatorHeight="4dp"
+                app:tabSelectedTextColor="#000"
+                app:tabTextColor="#fff"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.viewpager.widget.ViewPager
+
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            binding:adapter="@{adapter}"
+            binding:itemBinding="@{viewModel.itemBinding}"
+            binding:items="@{viewModel.items}"
+            binding:onPageSelectedCommand="@{viewModel.onPageSelectedCommand}"
+            binding:pageTitles="@{viewModel.pageTitles}"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
