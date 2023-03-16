@@ -28,8 +28,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.CoordinatorViewPagerActivity"/>
-        <activity android:name=".ui.activity.CoordinatorActivity"/>
+        <activity android:name=".ui.coordinator.CoordinatorViewPagerActivity"/>
+        <activity android:name=".ui.coordinator.CoordinatorToolbarActivity"/>
+        <activity android:name=".ui.coordinator.CoordinatorActivity"/>
 
     </application>
 

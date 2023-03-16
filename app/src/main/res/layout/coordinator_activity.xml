@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.zdh.study.vm.CoordinatorViewModel" />
     </data>
 
     <LinearLayout
@@ -13,14 +17,15 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="toCoordinatorToolbar"
             android:layout_margin="20dp"
+            binding:onClickCommand="@{viewModel.jumpToolbarCommand}"
             android:text="CoordinatorToolbar" />
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="toCoordinatorViewPager"
-            android:layout_margin="20dp"
+            binding:onClickCommand="@{viewModel.jumpViewPagerCommand}"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:text="CoordinatorViewPager" />
     </LinearLayout>
 </layout>

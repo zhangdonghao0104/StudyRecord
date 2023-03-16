@@ -1,20 +1,16 @@
-package com.zdh.study.ui.activity;
+package com.zdh.study.ui.coordinator;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.material.tabs.TabLayout;
 import com.zdh.study.R;
 import com.zdh.study.databinding.ActivityCoordinatorViewpagerBinding;
-import com.zdh.study.ui.adapter.ViewPagerBindingAdapter;
 import com.zdh.study.ui.fragment.CoordinatorHomeFragment;
 import com.zdh.study.vm.CoordinatorViewModel;
 
@@ -28,8 +24,8 @@ public class CoordinatorViewPagerActivity extends BaseActivity<ActivityCoordinat
     ViewPager mViewPager;
     private List<Fragment> mFragments;
 
-    String[] mTitles = new String[]{"主页", "微博", "相册"};
-
+    String[] mTitles = new String[]{"主页", "微博", "相册"}; //标题列表
+    ArrayList<String> titleList= new ArrayList<String>();
     @Override
     public int initContentView(Bundle savedInstanceState) {
         return R.layout.activity_coordinator_viewpager;
@@ -49,10 +45,12 @@ public class CoordinatorViewPagerActivity extends BaseActivity<ActivityCoordinat
 
     public class TabFragmentPagerAdapter extends FragmentStatePagerAdapter {
         private List<Fragment> mlist;
+        private List<String> titleList;
 
-        public TabFragmentPagerAdapter(FragmentManager fm, List<Fragment> list) {
+        public TabFragmentPagerAdapter(FragmentManager fm, List<Fragment> list, ArrayList<String> titleList) {
             super(fm);
             this.mlist = list;
+            this.titleList = titleList;
         }
 
 
@@ -65,15 +63,19 @@ public class CoordinatorViewPagerActivity extends BaseActivity<ActivityCoordinat
         public int getCount() {
             return mlist.size();
         }
+
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return titleList.get(position);
+        }
     }
 
     private void initTopTab() {
-        binding.tabs.setupWithViewPager(binding.viewpager);
-        binding.viewpager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(binding.tabs));
-        binding.viewpager.setAdapter(new ViewPagerBindingAdapter());
-
-        adapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), mFragments);
+        adapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), mFragments,titleList);
         binding.viewpager.setAdapter(adapter);
+
+        binding.tabs.setupWithViewPager(binding.viewpager);
 
     }
 
@@ -81,23 +83,11 @@ public class CoordinatorViewPagerActivity extends BaseActivity<ActivityCoordinat
         mFragments = new ArrayList<>();
         mFragments.add(new CoordinatorHomeFragment());
         mFragments.add(new CoordinatorHomeFragment());
-        mFragments.add(new CoordinatorHomeFragment());
 
+        titleList.add("武侠");
+        titleList.add("科幻");
 
-//        commitAllowingStateLoss(0);
     }
-//    private void commitAllowingStateLoss(int position) {
-//        hideAllFragment();
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        Fragment currentFragment = getSupportFragmentManager().findFragmentByTag(position + "");
-//        if (currentFragment != null) {
-//            transaction.show(currentFragment);
-//        } else {
-//            currentFragment = mFragments.get(position);
-//            transaction.add(R.id.frameLayout, currentFragment, position + "");
-//        }
-//        transaction.commitAllowingStateLoss();
-//    }
 
     private void hideAllFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

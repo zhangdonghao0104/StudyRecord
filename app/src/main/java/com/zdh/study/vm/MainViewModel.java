@@ -4,7 +4,8 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 
-import com.zdh.study.ui.activity.CoordinatorViewPagerActivity;
+import com.zdh.study.ui.coordinator.CoordinatorActivity;
+import com.zdh.study.ui.coordinator.CoordinatorViewPagerActivity;
 
 import me.goldze.mvvmhabit.base.BaseViewModel;
 import me.goldze.mvvmhabit.binding.command.BindingAction;
@@ -16,11 +17,11 @@ public class MainViewModel extends BaseViewModel {
         super(application);
     }
 
-    //登录按钮的点击事件
+
     public BindingCommand jumpOnClickCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            startActivity(CoordinatorViewPagerActivity.class);
+            startActivity(CoordinatorActivity.class);
         }
     });
 }

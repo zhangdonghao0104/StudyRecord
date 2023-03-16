@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.zdh.study.vm.CoordinatorItemViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,6 +19,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:gravity="center"
             android:textSize="20sp"
+            android:text="@{viewModel.itemData.content}"
             android:id="@+id/item_tv"
             />
 
