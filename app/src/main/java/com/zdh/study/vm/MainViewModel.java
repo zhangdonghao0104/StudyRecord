@@ -4,8 +4,7 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 
-import com.zdh.study.ui.coordinator.CoordinatorActivity;
-import com.zdh.study.ui.coordinator.CoordinatorViewPagerActivity;
+import com.zdh.study.ui.coordinator.ActivityCoordinator;
 
 import me.goldze.mvvmhabit.base.BaseViewModel;
 import me.goldze.mvvmhabit.binding.command.BindingAction;
@@ -21,7 +20,7 @@ public class MainViewModel extends BaseViewModel {
     public BindingCommand jumpOnClickCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            startActivity(CoordinatorActivity.class);
+            startActivity(ActivityCoordinator.class);
         }
     });
 }

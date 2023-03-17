@@ -9,8 +9,10 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
+import com.zdh.study.BR;
 import com.zdh.study.R;
 import com.zdh.study.databinding.ActivityCoordinatorViewpagerBinding;
+import com.zdh.study.databinding.ActivityCoordinatorViewpagerPlusBinding;
 import com.zdh.study.ui.fragment.CoordinatorHomeFragment;
 import com.zdh.study.vm.CoordinatorViewModel;
 
@@ -19,7 +21,7 @@ import java.util.List;
 
 import me.goldze.mvvmhabit.base.BaseActivity;
 
-public class CoordinatorViewPagerActivity extends BaseActivity<ActivityCoordinatorViewpagerBinding, CoordinatorViewModel> {
+public class ActivityCoordinatorViewPagerPlus extends BaseActivity<ActivityCoordinatorViewpagerPlusBinding, CoordinatorViewModel> {
     TabFragmentPagerAdapter adapter;
     ViewPager mViewPager;
     private List<Fragment> mFragments;
@@ -28,7 +30,7 @@ public class CoordinatorViewPagerActivity extends BaseActivity<ActivityCoordinat
     ArrayList<String> titleList= new ArrayList<String>();
     @Override
     public int initContentView(Bundle savedInstanceState) {
-        return R.layout.activity_coordinator_viewpager;
+        return R.layout.activity_coordinator_viewpager_plus;
     }
 
     @Override
@@ -80,6 +82,8 @@ public class CoordinatorViewPagerActivity extends BaseActivity<ActivityCoordinat
     }
 
     private void initFragment() {
+        setSupportActionBar(binding.toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mFragments = new ArrayList<>();
         mFragments.add(new CoordinatorHomeFragment());
         mFragments.add(new CoordinatorHomeFragment());

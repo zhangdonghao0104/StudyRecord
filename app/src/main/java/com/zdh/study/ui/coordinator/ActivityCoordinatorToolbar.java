@@ -2,9 +2,6 @@ package com.zdh.study.ui.coordinator;
 
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 
@@ -15,11 +12,9 @@ import com.zdh.study.ui.data.CoordinatorData;
 import com.zdh.study.vm.CoordinatorItemViewModel;
 import com.zdh.study.vm.CoordinatorViewModel;
 
-import java.util.ArrayList;
-
 import me.goldze.mvvmhabit.base.BaseActivity;
 
-public class CoordinatorToolbarActivity extends BaseActivity<ActivityCoordinatorlayoutBinding, CoordinatorViewModel> {
+public class ActivityCoordinatorToolbar extends BaseActivity<ActivityCoordinatorlayoutBinding, CoordinatorViewModel> {
 
     @Override
     public int initContentView(Bundle savedInstanceState) {
@@ -34,7 +29,7 @@ public class CoordinatorToolbarActivity extends BaseActivity<ActivityCoordinator
     @Override
     public void initData() {
         super.initData();
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(CoordinatorToolbarActivity.this));
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(ActivityCoordinatorToolbar.this));
         for (int i = 0; i < 30; i++) {
             CoordinatorData coordinatorData = new CoordinatorData("条目" + i);
             CoordinatorItemViewModel itemViewModel = new CoordinatorItemViewModel(viewModel, coordinatorData);

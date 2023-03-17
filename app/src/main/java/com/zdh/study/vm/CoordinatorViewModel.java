@@ -8,9 +8,11 @@ import androidx.databinding.ObservableList;
 
 import com.zdh.study.BR;
 import com.zdh.study.R;
-import com.zdh.study.ui.coordinator.CoordinatorActivity;
-import com.zdh.study.ui.coordinator.CoordinatorToolbarActivity;
-import com.zdh.study.ui.coordinator.CoordinatorViewPagerActivity;
+import com.zdh.study.ui.coordinator.ActivityCoordinatorToolbar;
+import com.zdh.study.ui.coordinator.ActivityCoordinatorViewEffect;
+import com.zdh.study.ui.coordinator.ActivityCoordinatorViewPager;
+import com.zdh.study.ui.coordinator.ActivityCoordinatorViewPagerHead;
+import com.zdh.study.ui.coordinator.ActivityCoordinatorViewPagerPlus;
 
 import me.goldze.mvvmhabit.base.BaseViewModel;
 import me.goldze.mvvmhabit.binding.command.BindingAction;
@@ -25,13 +27,33 @@ public class CoordinatorViewModel extends BaseViewModel {
     public BindingCommand jumpToolbarCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            startActivity(CoordinatorToolbarActivity.class);
+            startActivity(ActivityCoordinatorToolbar.class);
         }
     });
     public BindingCommand jumpViewPagerCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            startActivity(CoordinatorViewPagerActivity.class);
+            startActivity(ActivityCoordinatorViewPager.class);
+        }
+    });
+
+    public BindingCommand jumpViewPagerPlusCommand = new BindingCommand(new BindingAction() {
+        @Override
+        public void call() {
+            startActivity(ActivityCoordinatorViewPagerPlus.class);
+        }
+    });
+
+    public BindingCommand jumpViewPagerEffectCommand = new BindingCommand(new BindingAction() {
+        @Override
+        public void call() {
+            startActivity(ActivityCoordinatorViewEffect.class);
+        }
+    });
+    public BindingCommand jumpViewPagerHeadCommand = new BindingCommand(new BindingAction() {
+        @Override
+        public void call() {
+            startActivity(ActivityCoordinatorViewPagerHead.class);
         }
     });
 

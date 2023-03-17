@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.zdh.study.vm.ViewPagerViewModel" />
+
+        <import type="com.zdh.study.ui.adapter.ViewPagerBindingAdapter" />
+
+        <variable
+            name="viewModel"
+            type="ViewPagerViewModel" />
+
+        <variable
+            name="adapter"
+            type="ViewPagerBindingAdapter" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/background_light"
+        android:fitsSystemWindows="true"
+        >
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            >
+
+            <LinearLayout
+                android:id="@+id/ll_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_scrollFlags="scroll">
+
+
+                <ImageView
+                    android:id="@+id/headview"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/yingbao"/>
+
+
+                <androidx.appcompat.widget.SearchView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                </androidx.appcompat.widget.SearchView>
+
+
+                <TextView
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:background="@android:color/holo_purple"
+                    android:gravity="center"
+                    android:text="header view 2"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="?attr/colorPrimary"
+                app:tabIndicatorColor="@color/colorAccent"
+                app:tabIndicatorHeight="4dp"
+                app:tabSelectedTextColor="#000"
+                app:tabTextColor="#fff" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        </androidx.viewpager.widget.ViewPager>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="15dp"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>
