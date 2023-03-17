@@ -1,7 +1,10 @@
 package me.goldze.mvvmhabit.base;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Window;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
@@ -48,6 +51,9 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
         initViewObservable();
         //注册RxBus
         viewModel.registerRxBus();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
     }
 
     @Override
