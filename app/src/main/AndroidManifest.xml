@@ -36,6 +36,7 @@
         <activity android:name=".ui.coordinator.ActivityCoordinator"/>
         <activity android:name=".ui.design.factory.ActivityFactory"/>
         <activity android:name=".ui.design.ActivityDesign"/>
+        <activity android:name=".ui.design.build.ActivityBuilder"/>
 
     </application>
 
