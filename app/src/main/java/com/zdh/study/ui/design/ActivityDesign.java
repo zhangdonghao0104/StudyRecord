@@ -2,6 +2,7 @@ package com.zdh.study.ui.design;
 
 import android.os.Bundle;
 
+import com.zdh.study.BR;
 import com.zdh.study.R;
 import com.zdh.study.databinding.ActivityDesignBinding;
 import com.zdh.study.vm.DesignViewModel;
@@ -16,6 +17,6 @@ public class ActivityDesign extends BaseActivity <ActivityDesignBinding, DesignV
 
     @Override
     public int initVariableId() {
-        return 0;
+        return BR.viewModel;
     }
 }

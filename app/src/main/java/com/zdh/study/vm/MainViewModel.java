@@ -5,7 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 
 import com.zdh.study.ui.coordinator.ActivityCoordinator;
-import com.zdh.study.ui.design.factory.ActivityFactory;
+import com.zdh.study.ui.design.ActivityDesign;
 
 import me.goldze.mvvmhabit.base.BaseViewModel;
 import me.goldze.mvvmhabit.binding.command.BindingAction;
@@ -27,7 +27,7 @@ public class MainViewModel extends BaseViewModel {
     public BindingCommand jumpDesignCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            startActivity(ActivityFactory.class);
+            startActivity(ActivityDesign.class);
         }
     });
 }
