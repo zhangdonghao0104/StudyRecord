@@ -46,7 +46,8 @@
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="仪表盘" />
+            binding:onClickCommand="@{viewModel.ornamentCommand}"
+            android:text="装饰者模式" />
 
     </LinearLayout>
 </layout>

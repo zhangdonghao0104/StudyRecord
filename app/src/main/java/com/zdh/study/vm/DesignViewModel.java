@@ -13,6 +13,9 @@ import com.zdh.study.ui.design.factory.simple.GDComputerFactory;
 import com.zdh.study.ui.design.instance.Singleton;
 import com.zdh.study.ui.design.instance.Singleton1;
 import com.zdh.study.ui.design.instance.Singleton2;
+import com.zdh.study.ui.design.ornament.HongQiGong;
+import com.zdh.study.ui.design.ornament.OuYangFeng;
+import com.zdh.study.ui.design.ornament.YangGuo;
 import com.zdh.study.ui.design.proxy.DynamicPurchasing;
 import com.zdh.study.ui.design.proxy.IShop;
 import com.zdh.study.ui.design.proxy.Purchaser;
@@ -96,6 +99,26 @@ public class DesignViewModel extends BaseViewModel {
             ClassLoader loader = zdh.getClass().getClassLoader();
             IShop iShop = (IShop) Proxy.newProxyInstance(loader, new Class[]{IShop.class}, dynamicPurchasing);
             iShop.buy();
+        }
+    });
+
+    /*
+    * @author mousse
+    * create time 2023/3/21 11:12
+    * description:装饰者模式：动态地给一个对象添加一些额外的职责，就增加功能来说，装饰模式比生成子类更为灵活
+    * Component:抽象组件，可以是接口，或者是抽象类，即被装饰的最原始的对象这里指Swordsman
+    * ConcreteComponent:组件具体实现类，被装饰的具体对象这里指YangGuo
+    * Decorator:抽象装饰者，从外类来拓展Component雷达额功能，
+    * ConcreteDecorator:装饰者的具体实现类 这里指欧阳锋，洪七公
+    */
+    public BindingCommand ornamentCommand = new BindingCommand(new BindingAction() {
+        @Override
+        public void call() {
+            YangGuo yangGuo = new YangGuo();
+            HongQiGong hongQiGong = new HongQiGong(yangGuo);
+            hongQiGong.attackMagic();
+            OuYangFeng ouYangFeng = new OuYangFeng(yangGuo);
+            ouYangFeng.attackMagic();
         }
     });
 }
