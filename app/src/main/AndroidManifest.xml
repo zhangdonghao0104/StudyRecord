@@ -34,6 +34,8 @@
         <activity android:name=".ui.coordinator.ActivityCoordinatorViewPagerHead"/>
         <activity android:name=".ui.coordinator.ActivityCoordinatorToolbar"/>
         <activity android:name=".ui.coordinator.ActivityCoordinator"/>
+        <activity android:name=".ui.design.factory.ActivityFactory"/>
+        <activity android:name=".ui.design.ActivityDesign"/>
 
     </application>
 
