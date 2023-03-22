@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 
 import com.zdh.study.ui.design.build.Director;
 import com.zdh.study.ui.design.build.MoonComputerBuilder;
+import com.zdh.study.ui.design.facade.ZhangWuJi;
 import com.zdh.study.ui.design.factory.HpComputer;
 import com.zdh.study.ui.design.factory.LenovoComputer;
 import com.zdh.study.ui.design.factory.simple.ComputerFactory;
@@ -13,6 +14,8 @@ import com.zdh.study.ui.design.factory.simple.GDComputerFactory;
 import com.zdh.study.ui.design.instance.Singleton;
 import com.zdh.study.ui.design.instance.Singleton1;
 import com.zdh.study.ui.design.instance.Singleton2;
+import com.zdh.study.ui.design.observer.SubscriptionSubject;
+import com.zdh.study.ui.design.observer.WeiXinUser;
 import com.zdh.study.ui.design.ornament.HongQiGong;
 import com.zdh.study.ui.design.ornament.OuYangFeng;
 import com.zdh.study.ui.design.ornament.YangGuo;
@@ -20,6 +23,10 @@ import com.zdh.study.ui.design.proxy.DynamicPurchasing;
 import com.zdh.study.ui.design.proxy.IShop;
 import com.zdh.study.ui.design.proxy.Purchaser;
 import com.zdh.study.ui.design.proxy.Zhangdh;
+import com.zdh.study.ui.design.strategy.CommonRivalStrategy;
+import com.zdh.study.ui.design.strategy.StrategyContext;
+import com.zdh.study.ui.design.strategy.StrongRivalStrategy;
+import com.zdh.study.ui.design.strategy.WeakRivalStrategy;
 
 import java.lang.reflect.Proxy;
 
@@ -119,6 +126,63 @@ public class DesignViewModel extends BaseViewModel {
             hongQiGong.attackMagic();
             OuYangFeng ouYangFeng = new OuYangFeng(yangGuo);
             ouYangFeng.attackMagic();
+        }
+    });
+
+    /*
+    * @author mousse
+    * create time 2023/3/21 11:38
+    * description:外观模式/门面模式
+    * 要求一个子系统的外部与内部的通讯必须通过一个统一的对象进行，此模式提供一个高层的接口，是的子系统更易于应用
+    * facade:外观类，知道哪些子系统负责处理请求，将客户端的请求代理给适当的子系统对象，这里指张无忌
+    * subsystem:子系统类，可以有以恶或者多个子系统类，h实现子系统的功能，处理外观类指派的任务，子系统类不包含外观类的应用，这里指经脉，内功，招式
+    */
+    public BindingCommand facadeCommand = new BindingCommand(new BindingAction() {
+        @Override
+        public void call() {
+            ZhangWuJi zhangWuJi = new ZhangWuJi();
+            zhangWuJi.QianKun();
+            zhangWuJi.QiShangQuan();
+        }
+    });
+
+    /*
+    * @author mousse
+    * create time 2023/3/21 13:20
+    * description:策略设计模式:定义一系列算法，把每种算法封装起来。并使他们可以相互替换，策略模式使算法可独立于使用它的客户而独立变化
+    * StrategyContext：上下文角色，用来操作策略模式的上下文环境，起到承上启下的作用，屏蔽高层模块对策略、算法的访问
+    * Strategy:抽象策略角色，策略，算法的抽象，通常为接口
+    * ConcreteStrategy:具体的策略实现
+    */
+    public BindingCommand strategyCommand = new BindingCommand(new BindingAction() {
+        @Override
+        public void call() {
+            StrategyContext strategyContext;
+            strategyContext = new StrategyContext(new WeakRivalStrategy());
+            strategyContext.fighting();
+
+            strategyContext = new StrategyContext(new CommonRivalStrategy());
+            strategyContext.fighting();
+
+            strategyContext = new StrategyContext(new StrongRivalStrategy());
+            strategyContext.fighting();
+
+        }
+    });
+
+
+    public BindingCommand observerCommand = new BindingCommand(new BindingAction() {
+        @Override
+        public void call() {
+
+            SubscriptionSubject subscriptionSubject = new SubscriptionSubject();
+            WeiXinUser xinUser1 = new WeiXinUser("君陌");
+            WeiXinUser xinUser2 = new WeiXinUser("宁缺");
+            WeiXinUser xinUser3 = new WeiXinUser("林雾");
+            subscriptionSubject.attach(xinUser1);
+            subscriptionSubject.attach(xinUser2);
+            subscriptionSubject.attach(xinUser3);
+            subscriptionSubject.notify("夫子登天了");
         }
     });
 }

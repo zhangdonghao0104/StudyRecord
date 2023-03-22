@@ -49,5 +49,23 @@
             binding:onClickCommand="@{viewModel.ornamentCommand}"
             android:text="装饰者模式" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            binding:onClickCommand="@{viewModel.facadeCommand}"
+            android:text="外观模式" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            binding:onClickCommand="@{viewModel.strategyCommand}"
+            android:text="策略模式" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            binding:onClickCommand="@{viewModel.observerCommand}"
+            android:text="观察者模式" />
+
     </LinearLayout>
 </layout>

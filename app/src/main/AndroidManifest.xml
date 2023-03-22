@@ -35,6 +35,7 @@
         <activity android:name=".ui.coordinator.ActivityCoordinatorToolbar"/>
         <activity android:name=".ui.coordinator.ActivityCoordinator"/>
         <activity android:name=".ui.design.ActivityDesign"/>
+        <activity android:name=".ui.rxjava.ActivityRxJava"/>
 
     </application>
 
